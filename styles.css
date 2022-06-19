@@ -1,22 +1,41 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: #011f3f;
 }
 
 #level-title {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 3rem;
-  margin:  5%;
-  color: #FEF2BF;
+  margin: 5%;
+  color: #fef2bf;
+  line-height: 2.6rem;
+}
+
+#level-title .md {
+  display: none;
+}
+
+button.start {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .container {
-  display: block;
-  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  max-width: 50%;
   margin: auto;
-
 }
-
 
 .btn {
   margin: 25px;
@@ -55,10 +74,32 @@ body {
 
 footer {
   margin: 50px 0px;
-  color: #DBEDF3;
+  color: #dbedf3;
   font-family: sans-serif;
 }
-input {
-  box-shadow: 2px 2px blue;
-  margin : 30px 0px;
+
+/* mobile media query */
+@media screen and (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    height: 100px;
+    width: 100px;
+  }
+
+  #level-title {
+    font-family: "Press Start 2P", cursive;
+    font-size: 1rem;
+    margin: 20px 0;
+  }
+
+  #level-title .lg {
+    display: none;
+  }
+
+  #level-title .md {
+    display: block;
+  }
 }
