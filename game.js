@@ -8,15 +8,28 @@ var started = false;
 
 var level = 0;
 
-$(document).keypress(function(){
+function start() {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
     started=true;
   }
+}
+
+var gameOverTemplate = `<span>Game Over, Press Any Key to Restart or click <button class="start" onclick={start()}>Restart Game</button></span>`
+
+$(document).keypress(function(){
+  start();
 });
 
+$('.start').click(function() {
+  start();
+})
+
 $(".btn").click(function(){
+
+if (!started) return; // buttons should not work if game is not started/in progress
+
 var  userChosenColour = $(this).attr("id");
 
 userClickedPattern.push(userChosenColour);
@@ -48,7 +61,7 @@ if (gamePattern[currentLevel]===userClickedPattern[currentLevel]){
     setTimeout(function(){
       $("body").removeClass("game-over");
     }, 200);
-      $("#level-title").text("Game Over, Press Any Key to Restart");
+      $("#level-title").html(gameOverTemplate);
 
       startOver();
 
